@@ -1,0 +1,472 @@
+/* 1. CSS VARIABLE & GLOBAL RESET (Dark Mode)*/
+:root {
+    /* Mode Terang (Light Mode) */
+    --warna-biru-navy: #0F4C81;    
+    --warna-aksen: #D4AF37;        
+    --warna-latar: #FAFAFA;        /* Background utama halaman */
+    --warna-putih: #FFFFFF;        /* Background kartu / card */
+    --warna-teks: #1C1C1C;         /* Judul utama (Hitam) */
+    --warna-teks-muted: #555555;   /* Paragraf / Deskripsi (Abu Tua) */
+    --warna-abu-muda: #EFEFEF;     /* Garis & Border */
+    --warna-shadow: rgba(0, 0, 0, 0.06);
+    --warna-salah: #D9534F;
+    
+    --transisi-premium: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+[data-theme="dark"] {
+    /* Mode Gelap (Dark Mode) */
+    --warna-biru-navy: #3b82f6;    /* Navy disesuaikan ke biru terang agar kontras di hitam */
+    --warna-aksen: #F5C453;        
+    --warna-latar: #121212;        /* Background halaman jadi gelap */
+    --warna-putih: #1E1E1E;        /* Kartu / Card jadi abu-abu gelap */
+    --warna-teks: #FFFFFF;         /* Judul utama jadi putih bersih */
+    --warna-teks-muted: #CECECE;   /* Paragraf jadi abu-abu terang */
+    --warna-abu-muda: #2A2A2A;     /* Garis border jadi gelap */
+    --warna-shadow: rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--warna-latar);
+    color: var(--warna-teks);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    background-color: var(--warna-latar);
+    color: var(--warna-teks);
+}
+
+/* Custom Text Selection Highlight */
+::selection {
+    background-color: var(--warna-aksen);
+    color: #121212;
+}
+
+/* 2. SKALA TIPOGRAFI & HIERARKI (Golden Ratio)*/
+h1 {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--warna-biru-navy);
+    transition: color 0.3s ease;
+}
+[data-theme="dark"] h1 { color: #FFFFFF; }
+
+h2.judul-blok {
+    font-size: 1.75rem; /* 28px */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px;
+    letter-spacing: -0.5px;
+    color: var(--warna-teks);
+}
+h2.judul-blok span { color: var(--warna-aksen); }
+
+h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--warna-teks);
+}
+
+p {
+    font-size: 1rem; /* 16px */
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--warna-teks-muted);
+}
+
+/* 3. NAVIGATION BAR COMPONENT */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 1000;
+    transition: var(--transisi-premium);
+}
+
+header.navbar-shrink-aktif {
+    background-color: var(--warna-putih);
+    box-shadow: 0 4px 20px var(--warna-shadow);
+    padding: 8px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transisi-premium);
+}
+
+header.navbar-shrink-aktif .nav-container {
+    padding: 12px 24px;
+}
+
+.logo-cv {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--warna-teks);
+}
+.logo-cv span { color: var(--warna-aksen); }
+
+.menu-nav {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.menu-nav a {
+    text-decoration: none;
+    color: var(--warna-teks-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transisi-premium);
+}
+
+.menu-nav a:hover, .menu-nav a.active {
+    color: var(--warna-biru-navy);
+}
+[data-theme="dark"] .menu-nav a:hover, [data-theme="dark"] .menu-nav a.active { color: var(--warna-aksen); }
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-tema, .menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--warna-teks);
+    cursor: pointer;
+    transition: var(--transisi-premium);
+}
+
+.menu-toggle { display: none; }
+
+/* 4. LAYOUT SECTION & WHITESPACE SYSTEM */
+section {
+    padding: 120px 24px 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.section-reveal.visible-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Section */
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+}
+
+.hero-info { flex: 1; }
+.label-status {
+    display: inline-block;
+    background-color: var(--warna-abu-muda);
+    color: var(--warna-teks);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.sub-title {
+    height: 35px;
+    color: var(--warna-aksen);
+    margin: 16px 0 24px 0;
+}
+
+.deskripsi-diri { margin-bottom: 40px; }
+
+.hero-cta {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-utama, .btn-kedua {
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transisi-premium);
+}
+
+.btn-utama {
+    background-color: var(--warna-biru-navy);
+    color: var(--warna-putih);
+    border: 1px solid var(--warna-biru-navy);
+}
+[data-theme="dark"] .btn-utama {
+    background-color: var(--warna-aksen);
+    color: #121212;
+    border: 1px solid var(--warna-aksen);
+}
+
+.btn-utama:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--warna-shadow);
+}
+
+.btn-kedua {
+    background-color: transparent;
+    color: var(--warna-teks);
+    border: 1px solid var(--warna-teks-muted);
+}
+.btn-kedua:hover { background-color: var(--warna-abu-muda); }
+
+.hero-visual { flex: 1; display: flex; justify-content: flex-end; }
+.bingkai-foto {
+    width: 340px;
+    height: 340px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px var(--warna-shadow);
+}
+
+.bingkai-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transisi-premium);
+}
+.bingkai-foto:hover img { transform: scale(1.05); }
+
+/* About Section */
+.about-container {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+}
+
+.about-text { flex: 5; display: flex; flex-direction: column; gap: 16px; }
+.about-stats { flex: 4; display: flex; gap: 24px; }
+
+.stat-card {
+    background-color: var(--warna-putih);
+    padding: 32px 24px;
+    border-radius: 12px;
+    text-align: center;
+    flex: 1;
+    box-shadow: 0 10px 30px var(--warna-shadow);
+    transition: background-color 0.3s ease;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--warna-biru-navy);
+}
+[data-theme="dark"] .stat-number { color: var(--warna-aksen); }
+
+/* Pendidikan Section */
+.edukasi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.kartu-edukasi {
+    background-color: var(--warna-putih);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px var(--warna-shadow);
+    border-left: 4px solid var(--warna-biru-navy);
+    transition: background-color 0.3s ease, border-left 0.3s ease;
+}
+[data-theme="dark"] .kartu-edukasi { border-left-color: var(--warna-aksen); }
+
+.edukasi-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.badge-tahun { font-size: 0.85rem; font-weight: 600; color: var(--warna-aksen); }
+.nilai-tag { font-size: 0.85rem; font-weight: 600; color: var(--warna-teks-muted); }
+.jurusan { font-weight: 500; color: var(--warna-teks); margin: 4px 0 12px 0; }
+
+/* Pengalaman Section (Timeline) */
+.kategori-pengalaman { margin-bottom: 48px; }
+.kategori-pengalaman h3 { margin-bottom: 24px; color: var(--warna-biru-navy); }
+[data-theme="dark"] .kategori-pengalaman h3 { color: var(--warna-aksen); }
+
+.timeline-container { border-left: 2px solid var(--warna-abu-muda); padding-left: 24px; }
+.timeline-box { position: relative; margin-bottom: 32px; }
+
+.timeline-box h4 { color: var(--warna-teks); }
+
+.timeline-box::before {
+    content: '';
+    position: absolute;
+    left: -31px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--warna-aksen);
+}
+
+.tgl-timeline { font-size: 0.85rem; font-weight: 600; color: var(--warna-aksen); }
+.sub-tgl { font-size: 0.9rem; font-weight: 500; color: var(--warna-teks); margin: 2px 0 8px 0; }
+
+/* Tabel Minimalis */
+.tabel-minimalis { 
+    width: 100%; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    background-color: var(--warna-putih);
+    box-shadow: 0 4px 15px var(--warna-shadow);
+}
+.baris-tabel { display: grid; grid-template-columns: 2fr 2fr 1fr; padding: 16px 24px; border-bottom: 1px solid var(--warna-abu-muda); color: var(--warna-teks-muted); }
+.header-tabel { background-color: var(--warna-abu-muda); color: var(--warna-teks); font-weight: 600; }
+.peran-bold { font-weight: 600; color: var(--warna-teks); }
+
+/* Portofolio Section */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.kartu-proyek {
+    background-color: var(--warna-putih);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--warna-shadow);
+    transition: var(--transisi-premium);
+}
+
+.kartu-proyek:hover { transform: translateY(-8px); box-shadow: 0 20px 40px var(--warna-shadow); }
+.proyek-img-wrapper { width: 100%; height: 200px; overflow: hidden; background-color: #eaeaea; }
+.proyek-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.proyek-detail { padding: 24px; }
+.proyek-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; color: var(--warna-aksen); text-transform: uppercase; margin-bottom: 8px; }
+.proyek-link { text-decoration: none; color: var(--warna-biru-navy); font-weight: 600; font-size: 0.9rem; }
+[data-theme="dark"] .proyek-link { color: var(--warna-aksen); }
+
+/* Keahlian Section */
+.skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.box-skill h3 { margin-bottom: 24px; }
+.skill-progress-grup { margin-bottom: 20px; }
+.skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; color: var(--warna-teks); }
+.bar-background { width: 100%; height: 6px; background-color: var(--warna-abu-muda); border-radius: 10px; overflow: hidden; }
+.bar-isi { width: 0%; height: 100%; background-color: var(--warna-biru-navy); border-radius: 10px; transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
+[data-theme="dark"] .bar-isi { background-color: var(--warna-aksen); }
+
+.list-skill-tag { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
+.list-skill-tag li { background-color: var(--warna-putih); color: var(--warna-teks); padding: 10px 18px; border-radius: 30px; font-size: 0.9rem; font-weight: 500; box-shadow: 0 4px 15px var(--warna-shadow); }
+.list-skill-tag i { color: var(--warna-aksen); margin-right: 6px; }
+
+/* Kontak Form & Focus States */
+.kontak-wrapper { display: grid; grid-template-columns: 4fr 5fr; gap: 64px; }
+.kontak-info-box { display: flex; flex-direction: column; gap: 24px; }
+.item-kontak { display: flex; align-items: center; gap: 16px; color: var(--warna-teks-muted); }
+.item-kontak i { font-size: 1.25rem; color: var(--warna-aksen); }
+
+.form-style { display: flex; flex-direction: column; gap: 20px; }
+.grup-input { display: flex; flex-direction: column; gap: 8px; }
+.grup-input label { font-size: 0.85rem; font-weight: 600; color: var(--warna-teks); }
+
+.grup-input input, .grup-input textarea {
+    padding: 14px;
+    border-radius: 8px;
+    background-color: var(--warna-putih);
+    border: 1px solid var(--warna-abu-muda);
+    color: var(--warna-teks);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: var(--transisi-premium);
+}
+
+.grup-input input:focus, .grup-input textarea:focus {
+    outline: none;
+    border-color: var(--warna-biru-navy);
+    box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.15);
+}
+[data-theme="dark"] .grup-input input:focus, [data-theme="dark"] .grup-input textarea:focus {
+    border-color: var(--warna-aksen);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+}
+
+.input-salah { border-color: var(--warna-salah) !important; }
+.pesan-salah { font-size: 0.8rem; color: var(--warna-salah); display: none; font-weight: 500; }
+.alert-sukses { background-color: #4BB543; color: white; padding: 12px; border-radius: 6px; display: none; font-weight: 600; font-size: 0.9rem; text-align: center; }
+
+/* Footer */
+footer { border-top: 1px solid var(--warna-abu-muda); padding: 32px 24px; text-align: center; }
+
+/* Tombol Back To Top */
+.btn-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 46px;
+    height: 46px;
+    background-color: var(--warna-biru-navy);
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: var(--transisi-premium);
+}
+[data-theme="dark"] .btn-back-to-top { background-color: var(--warna-aksen); color: #121212; }
+.btn-back-to-top.show-btn { opacity: 1; visibility: visible; transform: translateY(0); }
+.btn-back-to-top:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
+
+/* 5. RESPONSIVE DESIGN SYSTEM */
+@media (max-width: 992px) {
+    .hero-wrapper, .about-container, .skills-wrapper, .kontak-wrapper { flex-direction: column; gap: 40px; }
+    .hero-visual { justify-content: center; width: 100%; }
+    .edukasi-grid, .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    .menu-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--warna-putih);
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        box-shadow: 0 10px 20px var(--warna-shadow);
+        display: none;
+    }
+    .menu-nav.active-menu { display: flex; }
+    .edukasi-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .bingkai-foto { width: 280px; height: 280px; }
+}

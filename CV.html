@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS Pemrograman Web - Online CV Salsabiila</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="CVku.css">
+</head>
+<body data-theme="light">
+
+    <header id="mainNavbar">
+        <nav class="nav-container">
+            <div class="logo-cv">Salsabiila<span>.</span></div>
+            
+            <ul class="menu-nav" id="menuNav">
+                <li><a href="#hero" class="active">Profil</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#pengalaman">Pengalaman</a></li>
+                <li><a href="#portfolio">Proyek</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#kontak" class="btn-kontak-nav">Hubungi</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="toggleTema" class="btn-tema" title="Ubah Tema">
+                    <i class="fa-solid fa-moon" id="ikonTema"></i>
+                </button>
+                <button id="tombolMenuHP" class="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="section-reveal">
+            <div class="hero-wrapper">
+                <div class="hero-info">
+                    <span class="label-status">Sistem Informasi | Universitas Internasional Semen Indonesia</span>
+                    <h1>Salsabiila Dwike Sevtuari</h1>
+                    <h2 id="animasiKetik" class="sub-title"></h2>
+                    
+                    <p class="deskripsi-diri">
+                        Mahasiswi aktif program studi Sistem Informasi di Universitas Internasional Semen Indonesia. Berfokus mengintegrasikan kompetensi teknologi analitis dengan strategi <strong>Kewirausahaan berbasis Sistem Informasi</strong>.
+                    </p>
+                    
+                    <div class="hero-cta">
+                        <a href="#kontak" class="btn-utama">Hubungi Saya</a>
+                        <a href="#pengalaman" class="btn-kedua">Lihat Riwayat</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="bingkai-foto">
+                        <img src="fotoku.jpg.jpeg" alt="Foto Profesional Salsabiila">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-reveal">
+            <h2 class="judul-blok">Tentang <span>Saya</span></h2>
+            <div class="about-container">
+                <div class="about-text">
+                    <p>Saya memiliki ketertarikan mendalam pada pengolahan data mentah menjadi wawasan bisnis yang bernilai bagus. Melalui disiplin ilmu Sistem Informasi, saya belajar bagaimana merancang arsitektur digital yang efisien, ramah aksesibilitas, serta adaptif terhadap kebutuhan pasar startup modern. Aktif bergerak di bidang manajemen kepemimpinan organisasi internal kampus guna membentuk pola pikir solutif, komunikasi publik yang persuasif, serta ketelitian administrasi tingkat tinggi.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="3">0</span>
+                        <h3>Riset Proyek SI</h3>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="5">0</span>
+                        <h3>Sertifikat Kompetensi</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pendidikan" class="section-reveal">
+            <h2 class="judul-blok">Riwayat <span>Pendidikan</span></h2>
+            <div class="edukasi-grid">
+                <article class="kartu-edukasi">
+                    <div class="edukasi-header">
+                        <span class="badge-tahun">2024 - Sekarang</span>
+                        <span class="nilai-tag">IPK: 3,88</span>
+                    </div>
+                    <h3>Universitas Internasional Semen Indonesia</h3>
+                    <p class="jurusan">Sistem Informasi (S1)</p>
+                    <p class="detail-edu">Mengembangkan fondasi kuat pada analisis sistem bisnis, struktur data, konsep dasar pemrograman, serta manajemen proses startup TI.</p>
+                </article>
+
+                <article class="kartu-edukasi">
+                    <div class="edukasi-header">
+                        <span class="badge-tahun">2021 - 2024</span>
+                        <span class="nilai-tag">Nilai Akhir: 88</span>
+                    </div>
+                    <h3>Madrasah Aliyah Negeri 1 Tuban</h3>
+                    <p class="jurusan">Ilmu Pengetahuan Alam (IPA)</p>
+                    <p class="detail-edu">Fokus pada penalaran logika sains terstruktur dan aktif melatih kemampuan manajerial administrasi melalui organisasi kesekretariatan.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="pengalaman" class="section-reveal">
+            <h2 class="judul-blok">Pengalaman <span>Organisasi</span></h2>
+            
+            <div class="kategori-pengalaman">
+                <h3><i class="fa-solid fa-trophy"></i> Kepemimpinan & Manajemen Inti</h3>
+                <div class="timeline-container">
+                    <div class="timeline-box">
+                        <span class="tgl-timeline">Oktober 2025 – Januari 2026</span>
+                        <h4>Ketua Project – Game Edukasi "SnakeTech Adventure"</h4>
+                        <p class="sub-tgl">Mata Kuliah Rekayasa Perangkat Lunak (RPL)</p>
+                        <p class="isi-p">Memimpin tim pengembang dalam menyusun logika game puzzle pengenalan perangkat keras komputer. Mengatur pembagian beban kerja berkala demi pemenuhan tenggat waktu akademik.</p>
+                    </div>
+                    <div class="timeline-box">
+                        <span class="tgl-timeline">Juni 2025</span>
+                        <h4>Ketua Pelaksana – Mentorship with Purpose</h4>
+                        <p class="sub-tgl">Lembaga Dakwah Kampus (LDK) UISI</p>
+                        <p class="isi-p">Bertanggung jawab penuh atas keberhasilan perancangan kurikulum pembekalan nilai, koordinasi antar divisi panitia, dan mitigasi kendala operasional lapangan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kategori-pengalaman">
+                <h3><i class="fa-solid fa-users"></i> Staff Ahli & Pengawas Strategis</h3>
+                <div class="timeline-container">
+                    <div class="timeline-box">
+                        <span class="tgl-timeline">2025 – Sekarang</span>
+                        <h4>Staff Ahli Divisi PSDM</h4>
+                        <p class="sub-tgl">Himpunan Mahasiswa Sistem Informasi (HIMASISFOR)</p>
+                        <p class="isi-p">Menyusun cetak biru standarisasi kompetensi anggota kabinet, mengeksekusi pelatihan internal organisasi, dan melakukan monitoring evaluasi dwiwulan.</p>
+                    </div>
+                    <div class="timeline-box">
+                        <span class="tgl-timeline">Desember 2025 – Sekarang</span>
+                        <h4>Steering Committee (SC)</h4>
+                        <p class="sub-tgl">Kepanitiaan Besar ISME 7.0</p>
+                        <p class="isi-p">Bertindak selaku penasihat dan pengawas internal panitia pelaksana, mengarahkan target kerja kepanitiaan, dan memvalidasi laporan pertanggungjawaban.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kategori-pengalaman">
+                <h3><i class="fa-solid fa-list-check"></i> Kontribusi Divisi Operasional</h3>
+                <div class="tabel-minimalis">
+                    <div class="baris-tabel header-tabel">
+                        <div>Peran Kepanitiaan</div>
+                        <div>Nama Kegiatan / Organisasi</div>
+                        <div>Masa Bakti</div>
+                    </div>
+                    <div class="baris-tabel">
+                        <div class="peran-bold">Koordinator (KO) Sie Acara</div>
+                        <div>Vision & Kaderisasi SI Angkatan 2025</div>
+                        <div>Okt 2025 - Sekarang</div>
+                    </div>
+                    <div class="baris-tabel">
+                        <div class="peran-bold">Koordinator (KO) Sie Konsumsi</div>
+                        <div>Kuliah Lapangan SI Angkatan 2024</div>
+                        <div>Oktober 2025</div>
+                    </div>
+                    <div class="baris-tabel">
+                        <div class="peran-bold">Anggota Sie Acara</div>
+                        <div>Outing Kabinet GEMA HIMASISFOR</div>
+                        <div>Juli 2025</div>
+                    </div>
+                    <div class="baris-tabel">
+                        <div class="peran-bold">Anggota Sie Konsumsi</div>
+                        <div>Malam Keakraban SI Angkatan 2024</div>
+                        <div>Juni 2025</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section-reveal">
+            <h2 class="judul-blok">Proyek <span>Pilihan</span></h2>
+            <div class="portfolio-grid">
+                
+                <article class="kartu-proyek">
+                    <div class="proyek-img-wrapper">
+                        <img src="dashboard.png" alt="Analisis Data Sistem" loading="lazy">
+                    </div>
+                    <div class="proyek-detail">
+                        <span class="proyek-tag">Visualisasi Data Analytics</span>
+                        <h3>SI-Business Intelligence Dashboard</h3>
+                        <p>Rancangan konseptual pengolahan data log transaksi Perusahaan menggunakan teknik spreadsheet dinamis guna mendukung efisiensi stok.</p>
+                        <a href="https://kelompok-9-bike-sales-2bkakpboujpsj8gyowk4ph.streamlit.app/" class="btn-utama" target="_blank" style="display: inline-block; padding: 8px 16px; font-size: 0.85rem; margin-top: 12px; text-decoration: none;">Lihat Live Dashboard <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 6px;"></i></a>
+                    </div>
+                </article>
+
+                <article class="kartu-proyek">
+                    <div class="proyek-img-wrapper">
+                        <img src="snake.png" alt="SnakeTech Game" loading="lazy">
+                    </div>
+                    <div class="proyek-detail">
+                        <span class="proyek-tag">Pemodelan Perangkat Lunak</span>
+                        <h3>SnakeTech Adventure</h3>
+                        <p>Inovasi game edukasi hardware komputer yang dirancang menggunakan metode Pemodelan Perangkat Lunak untuk segmentasi siswa sekolah.</p>
+                        <a href="#kontak" class="proyek-link">Tanya Struktur Proyek <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </article>
+
+                <article class="kartu-proyek">
+                    <div class="proyek-img-wrapper">
+                        <img src="ProjectKewirausahaanTelkomU.png" alt="Audit Aksesibilitas" loading="lazy">
+                    </div>
+                    <div class="proyek-detail">
+                        <span class="proyek-tag">Entrepreneurship</span>
+                        <h3>Business</h3>
+                        <p>Merancang konsep bisns yang berfokus kebutuhan mahasiswa UISI dan TelkomU sebagai proyek pada program pertukaran pelajar.</p>
+                        <a href="#kontak" class="proyek-link">Tanya Struktur Proyek <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="keahlian" class="section-reveal">
+            <h2 class="judul-blok">Keahlian <span>Kompetensi</span></h2>
+            <div class="skills-wrapper">
+                <div class="box-skill">
+                    <h3>Teknis & Data (Hard Skills)</h3>
+                    
+                    <div class="skill-progress-grup">
+                        <div class="skill-info"><span>Data Analysis & Excel Spreadsheet</span><span>85%</span></div>
+                        <div class="bar-background"><div class="bar-isi" data-width="85%"></div></div>
+                    </div>
+                    <div class="skill-progress-grup">
+                        <div class="skill-info"><span>Figma, Canva, Adobe Photoshop, Coreldraw </span><span>80%</span></div>
+                        <div class="bar-background"><div class="bar-isi" data-width="80%"></div></div>
+                    </div>
+                    <div class="skill-progress-grup">
+                        <div class="skill-info"><span>Logic & Database System Design</span><span>75%</span></div>
+                        <div class="bar-background"><div class="bar-isi" data-width="75%"></div></div>
+                    </div>
+                </div>
+
+                <div class="box-skill">
+                    <h3>Kemampuan Kerja (Soft Skills)</h3>
+                    <ul class="list-skill-tag">
+                        <li><i class="fa-solid fa-star"></i> Kepemimpinan (Leadership)</li>
+                        <li><i class="fa-solid fa-star"></i> Manajemen Waktu (Time Management)</li>
+                        <li><i class="fa-solid fa-star"></i> Kerja Sama Tim (Teamwork)</li>
+                        <li><i class="fa-solid fa-star"></i> Ketelitian Administrasi & Sekretaris</li>
+                        <li><i class="fa-solid fa-star"></i> Komunikasi Publik (Public Speaking)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak" class="section-reveal">
+    <div class="kontak-wrapper">
+        <div class="kontak-info-box">
+            <h2>Informasi <span>Kontak</span></h2>
+            <p>Terbuka untuk kesempatan magang, kemitraan proyek riset data, serta kolaborasi kewirausahaan teknologi informasi.</p>
+            
+            <div class="item-kontak"><i class="fa-solid fa-location-dot"></i><p>Gresik, Jawa Timur</p></div>
+            <div class="item-kontak"><i class="fa-solid fa-phone"></i><p>082123456789</p></div>
+            <div class="item-kontak"><i class="fa-solid fa-envelope"></i><p>biilasa658@gmail.com</p></div>
+        </div>
+
+        <form id="formKirimPesan" class="form-style" action="https://formspree.io/f/xykvdlav" method="POST" novalidate>
+            <div id="suksesKirim" class="alert-sukses">Pesan valid, sedang mengirim ke email...</div>
+            
+            <div class="grup-input">
+                <label for="namaUser">Nama Pengirim</label>
+                <input type="text" id="namaUser" name="name" placeholder="Masukkan nama lengkap Anda">
+                <span class="pesan-salah" id="salahNama">Nama tidak boleh kosong!</span>
+            </div>
+            
+            <div class="grup-input">
+                <label for="emailUser">Email Korporat / Personal</label>
+                <input type="email" id="emailUser" name="email" placeholder="nama@instansi.com">
+                <span class="pesan-salah" id="salahEmail">Harap gunakan format email yang valid (mengandung '@')</span>
+            </div>
+            
+            <div class="grup-input">
+                <label for="isiPesan">Tulis Pesan</label>
+                <textarea id="isiPesan" name="message" placeholder="Deskripsikan tawaran kerja atau kolaborasi bisnis..."></textarea>
+                <span class="pesan-salah" id="salahPesan">Isi pesan tidak boleh dibiarkan kosong!</span>
+            </div>
+            
+            <button type="submit" class="btn-utama">Kirim Undangan Kontrak <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    </div>
+    </section>
+    </main>
+
+    <footer>
+        <div class="footer-konten">
+            <p>&copy; 2026 Salsabiila Dwike Sevtuari. Semua Hak Dilindungi | Tugas UTS Pemrograman Web.</p>
+        </div>
+    </footer>
+
+    <button id="btnBackToTop" class="btn-back-to-top" title="Kembali ke Atas">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="CV.js"></script>
+</body>
+</html>
