@@ -26,23 +26,24 @@
     --warna-shadow: rgba(0, 0, 0, 0.5);
 }
 
+/* FIX: Pengunci anti-overflow global agar web tidak bisa digeser ke kanan di HP */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Memotong konten liar yang keluar dari layar HP */
+    background-color: var(--warna-latar);
+    color: var(--warna-teks);
+}
+
 html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--warna-latar);
-    color: var(--warna-teks);
     transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body {
-    background-color: var(--warna-latar);
-    color: var(--warna-teks);
 }
 
 /* Custom Text Selection Highlight */
@@ -164,6 +165,8 @@ section {
     padding: 120px 24px 80px 24px;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .section-reveal {
@@ -185,7 +188,8 @@ section {
     gap: 48px;
 }
 
-.hero-info { flex: 1; }
+.hero-info { flex: 1; min-width: 0; } /* FIX: Mencegah flex-item meluap secara paksa */
+
 .label-status {
     display: inline-block;
     background-color: var(--warna-abu-muda);
@@ -207,6 +211,7 @@ section {
 
 .hero-cta {
     display: flex;
+    flex-wrap: wrap; /* FIX: Mencegah tombol cta berdempetan dan keluar layar di HP kecil */
     gap: 16px;
 }
 
@@ -341,11 +346,11 @@ section {
 .tabel-minimalis { 
     width: 100%; 
     border-radius: 8px; 
-    overflow: hidden; 
+    overflow-x: auto; /* FIX: Supaya tabel aman di mobile jika datanya terlalu panjang */
     background-color: var(--warna-putih);
     box-shadow: 0 4px 15px var(--warna-shadow);
 }
-.baris-tabel { display: grid; grid-template-columns: 2fr 2fr 1fr; padding: 16px 24px; border-bottom: 1px solid var(--warna-abu-muda); color: var(--warna-teks-muted); }
+.baris-tabel { display: grid; grid-template-columns: 2fr 2fr 1fr; padding: 16px 24px; border-bottom: 1px solid var(--warna-abu-muda); color: var(--warna-teks-muted); min-width: 500px; } /* Mencegah tabel gepeng di layar sangat kecil */
 .header-tabel { background-color: var(--warna-abu-muda); color: var(--warna-teks); font-weight: 600; }
 .peran-bold { font-weight: 600; color: var(--warna-teks); }
 
@@ -386,8 +391,8 @@ section {
 .item-kontak { display: flex; align-items: center; gap: 16px; color: var(--warna-teks-muted); }
 .item-kontak i { font-size: 1.25rem; color: var(--warna-aksen); }
 
-.form-style { display: flex; flex-direction: column; gap: 20px; }
-.grup-input { display: flex; flex-direction: column; gap: 8px; }
+.form-style { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+.grup-input { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 .grup-input label { font-size: 0.85rem; font-weight: 600; color: var(--warna-teks); }
 
 .grup-input input, .grup-input textarea {
@@ -398,6 +403,9 @@ section {
     color: var(--warna-teks);
     font-family: inherit;
     font-size: 0.95rem;
+    width: 100%; /* FIX: Memaksa input muat penuh di dalam kolom wrapper */
+    max-width: 100%;
+    box-sizing: border-box; /* Mencegah padding merusak ukuran lebar asli */
     transition: var(--transisi-premium);
 }
 
@@ -450,23 +458,61 @@ footer { border-top: 1px solid var(--warna-abu-muda); padding: 32px 24px; text-a
     .hero-wrapper, .about-container, .skills-wrapper, .kontak-wrapper { flex-direction: column; gap: 40px; }
     .hero-visual { justify-content: center; width: 100%; }
     .edukasi-grid, .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-stats { width: 100%; }
+
+    .kontak-wrapper { 
+        display: flex;          /* Ubah grid menjadi flex agar urutannya bisa diatur */
+        flex-direction: column; /* Menyusun konten secara vertikal ke bawah */
+        gap: 40px; 
+    }
+
+    /* Form (Kolom Input Nama, Email, Pesan) dipaksa naik ke urutan pertama */
+    .form-style {
+        order: 1; 
+    }
+
+    /* Informasi Kontak (Alamat, No HP, Email) turun ke urutan kedua */
+    .kontak-info-box {
+        order: 2; 
+    }
 }
 
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
+    
+    /* FIX: Perbaikan posisi kotak menu dropdown hamburger agar menempel pas di sisi kanan layar dan tidak melosok */
     .menu-nav {
         position: absolute;
         top: 100%;
-        left: 0;
+        right: 0; /* FIX: Mengganti left:0 menjadi right:0 agar nempel pas di kanan layar */
+        left: auto;
         width: 100%;
+        max-width: 100vw; /* Pembatas agar lebar kotak menu tidak melompati layar HP */
         background-color: var(--warna-putih);
         flex-direction: column;
         padding: 24px;
         gap: 16px;
         box-shadow: 0 10px 20px var(--warna-shadow);
         display: none;
+        box-sizing: border-box;
     }
+    
     .menu-nav.active-menu { display: flex; }
     .edukasi-grid, .portfolio-grid { grid-template-columns: 1fr; }
     .bingkai-foto { width: 280px; height: 280px; }
+
+    /* FIX: Mengatur ukuran teks Nama & Konten Hero agar responsif mengecil di layar HP */
+    h1 {
+        font-size: 1.75rem; /* Mengecilkan ukuran font nama dari 36px ke 28px agar pas di satu baris */
+        line-wrap: anywhere;
+        word-wrap: break-word;
+    }
+    
+    .sub-title {
+        font-size: 1.15rem;
+    }
+    
+    section {
+        padding: 100px 16px 60px 16px; /* Memperkecil padding tepi agar tidak memakan ruang konten utama */
+    }
 }
